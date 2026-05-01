@@ -3,162 +3,1007 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Performance Marketer — 이름</title>
+  <title>이한결 | Performance Marketer</title>
   <style>
+    :root {
+      --bg: #0b1220;
+      --bg2: #0f172a;
+      --card: #161f35;
+      --card2: #1a2540;
+      --blue: #2563eb;
+      --blue2: #1d4ed8;
+      --bluelight: #eef4ff;
+      --text: #ffffff;
+      --text2: #9aa8be;
+      --text3: #5b6780;
+      --border: #23314d;
+      --green: #2a8808;
+      --red: #d92727;
+    }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: 'Pretendard', 'Apple SD Gothic Neo', sans-serif;
-      background: #f9f9f9;
-      color: #222;
+      font-family: 'Apple SD Gothic Neo', 'Pretendard', 'Malgun Gothic', sans-serif;
+      background: var(--bg);
+      color: var(--text);
       line-height: 1.7;
     }
 
-    header {
-      background: #111;
-      color: #fff;
-      padding: 80px 40px;
-      text-align: center;
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 48px;
+      background: rgba(11,18,32,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
     }
 
-    header h1 {
-      font-size: 2.4rem;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-    }
-
-    header p {
-      margin-top: 10px;
-      font-size: 1.1rem;
-      color: #aaa;
-    }
-
-    header .contact {
-      margin-top: 20px;
+    nav .logo {
       font-size: 0.9rem;
-      color: #777;
-    }
-
-    header .contact a {
-      color: #ccc;
-      text-decoration: none;
-      margin: 0 8px;
-    }
-
-    section {
-      max-width: 720px;
-      margin: 60px auto;
-      padding: 0 24px;
-    }
-
-    h2 {
-      font-size: 1.1rem;
       font-weight: 700;
+      color: var(--text2);
+      letter-spacing: 0.5px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 32px;
+    }
+
+    nav ul a {
+      text-decoration: none;
+      color: var(--text2);
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+
+    nav ul a:hover { color: var(--text); }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 120px 48px 80px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .hero-label {
+      font-size: 0.8rem;
+      letter-spacing: 2px;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      color: #888;
-      border-bottom: 1px solid #e0e0e0;
-      padding-bottom: 8px;
+      color: var(--blue);
+      margin-bottom: 24px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -1px;
       margin-bottom: 28px;
     }
 
-    .item {
-      margin-bottom: 32px;
+    .hero-title span { color: var(--blue); }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--text2);
+      max-width: 540px;
+      margin-bottom: 48px;
+      line-height: 1.8;
     }
 
-    .item .title {
-      font-size: 1.05rem;
+    .hero-stats {
+      display: flex;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .stat-item .num {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--bluelight);
+    }
+
+    .stat-item .label {
+      font-size: 0.8rem;
+      color: var(--text3);
+      margin-top: 2px;
+    }
+
+    .hero-contact {
+      display: flex;
+      gap: 24px;
+    }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .contact-btn.primary {
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .contact-btn.primary:hover { background: var(--blue2); }
+
+    .contact-btn.secondary {
+      border: 1px solid var(--border);
+      color: var(--text2);
+    }
+
+    .contact-btn.secondary:hover {
+      border-color: var(--blue);
+      color: var(--text);
+    }
+
+    /* SECTION */
+    section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 100px 48px;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .section-desc {
+      color: var(--text2);
+      font-size: 0.95rem;
+      max-width: 600px;
+      margin-bottom: 60px;
+      line-height: 1.8;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 80px 0;
+    }
+
+    /* ABOUT INTRO */
+    .about-intro {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px;
+      margin-bottom: 60px;
+      font-size: 0.97rem;
+      color: var(--text2);
+      line-height: 2;
+    }
+
+    .about-intro strong {
+      color: var(--text);
       font-weight: 600;
     }
 
-    .item .meta {
-      font-size: 0.85rem;
-      color: #999;
-      margin-top: 2px;
-      margin-bottom: 8px;
+    /* CORE CAPABILITY */
+    .capability-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
     }
 
-    .item p {
+    .capability-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 36px 32px;
+      transition: border-color 0.2s;
+    }
+
+    .capability-card:hover { border-color: var(--blue); }
+
+    .cap-num {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--blue);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    .cap-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .cap-desc {
+      font-size: 0.88rem;
+      color: var(--text2);
+      line-height: 1.8;
+    }
+
+    /* PROFILE GRID */
+    .profile-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .profile-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+    }
+
+    .profile-box.full { grid-column: 1 / -1; }
+
+    .box-title {
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 24px;
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+
+    .timeline-item:last-child { margin-bottom: 0; }
+
+    .tl-date {
+      font-size: 0.8rem;
+      color: var(--text3);
+      white-space: nowrap;
+      min-width: 120px;
+      padding-top: 2px;
+    }
+
+    .tl-content .tl-title {
       font-size: 0.95rem;
-      color: #444;
+      font-weight: 600;
+      margin-bottom: 4px;
     }
 
-    .skills {
+    .tl-content .tl-desc {
+      font-size: 0.83rem;
+      color: var(--text2);
+      line-height: 1.7;
+    }
+
+    .license-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .license-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .license-item .name {
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .license-item .date {
+      font-size: 0.8rem;
+      color: var(--text3);
+    }
+
+    .tool-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
     }
 
-    .skill-tag {
-      background: #111;
-      color: #fff;
+    .tool-tag {
+      background: var(--card2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
       padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
+      color: var(--text2);
     }
 
+    /* PROJECTS */
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 32px;
+      transition: border-color 0.2s;
+    }
+
+    .project-card:hover { border-color: var(--blue); }
+
+    .project-header {
+      padding: 40px 40px 32px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .proj-num {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--blue);
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+
+    .proj-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .proj-sub {
+      font-size: 0.9rem;
+      color: var(--text2);
+      margin-bottom: 28px;
+      line-height: 1.7;
+    }
+
+    .kpi-row {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .kpi-badge {
+      background: rgba(37,99,235,0.12);
+      border: 1px solid rgba(37,99,235,0.3);
+      border-radius: 8px;
+      padding: 10px 18px;
+    }
+
+    .kpi-badge .kpi-label {
+      font-size: 0.72rem;
+      color: var(--blue);
+      letter-spacing: 0.5px;
+      margin-bottom: 2px;
+    }
+
+    .kpi-badge .kpi-val {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--bluelight);
+    }
+
+    .project-body {
+      padding: 36px 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .proj-section-title {
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text3);
+      margin-bottom: 14px;
+    }
+
+    .proj-info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .proj-info-item .info-label {
+      font-size: 0.75rem;
+      color: var(--text3);
+      margin-bottom: 4px;
+    }
+
+    .proj-info-item .info-val {
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .action-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .action-list li {
+      display: flex;
+      gap: 10px;
+      font-size: 0.88rem;
+      color: var(--text2);
+      line-height: 1.6;
+    }
+
+    .action-list li::before {
+      content: '→';
+      color: var(--blue);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .insight-box {
+      background: rgba(37,99,235,0.07);
+      border-left: 3px solid var(--blue);
+      border-radius: 0 8px 8px 0;
+      padding: 18px 20px;
+      font-size: 0.88rem;
+      color: var(--text2);
+      line-height: 1.8;
+      margin-top: 24px;
+      grid-column: 1 / -1;
+    }
+
+    .insight-box strong { color: var(--bluelight); }
+
+    /* DATA TABLE */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin-top: 12px;
+    }
+
+    .data-table th {
+      padding: 10px 14px;
+      background: var(--card2);
+      color: var(--text3);
+      font-weight: 500;
+      text-align: left;
+      font-size: 0.78rem;
+    }
+
+    .data-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text2);
+    }
+
+    .data-table tr:last-child td { border-bottom: none; }
+
+    .data-table .highlight { color: var(--text); font-weight: 600; }
+    .data-table .up { color: #4ade80; }
+    .data-table .down { color: #f87171; }
+
+    /* FOOTER */
     footer {
+      border-top: 1px solid var(--border);
+      padding: 48px;
       text-align: center;
-      padding: 40px;
-      font-size: 0.8rem;
-      color: #bbb;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    footer p {
+      font-size: 0.82rem;
+      color: var(--text3);
+      margin-bottom: 8px;
+    }
+
+    footer .footer-contact {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      margin-top: 16px;
+    }
+
+    footer .footer-contact a {
+      font-size: 0.85rem;
+      color: var(--text2);
+      text-decoration: none;
+    }
+
+    footer .footer-contact a:hover { color: var(--text); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 14px 20px; }
+      nav ul { display: none; }
+      #hero, section, footer { padding-left: 20px; padding-right: 20px; }
+      .capability-grid { grid-template-columns: 1fr; }
+      .profile-grid { grid-template-columns: 1fr; }
+      .profile-box.full { grid-column: auto; }
+      .project-body { grid-template-columns: 1fr; }
+      .hero-stats { gap: 24px; flex-wrap: wrap; }
+      .hero-contact { flex-direction: column; }
+      .proj-info-grid { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>이름</h1>
-    <p>Performance Marketer</p>
-    <div class="contact">
-      <a href="mailto:email@example.com">email@example.com</a>
-      <a href="#">LinkedIn</a>
-    </div>
-  </header>
+  <nav>
+    <div class="logo">이한결 — PM</div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#capability">역량</a></li>
+      <li><a href="#profile">프로필</a></li>
+      <li><a href="#projects">프로젝트</a></li>
+    </ul>
+  </nav>
 
-  <section>
-    <h2>About</h2>
-    <p>데이터 기반의 퍼포먼스 마케팅으로 성과를 만드는 마케터입니다. Meta·Google·Kakao 광고 운영부터 지표 분석과 최적화까지 전 과정을 담당합니다.</p>
+  <!-- HERO -->
+  <div id="hero">
+    <div class="hero-label">Performance Marketer Portfolio</div>
+    <h1 class="hero-title">
+      데이터를 읽고<br>
+      <span>성과로 증명하는</span><br>
+      퍼포먼스 마케터
+    </h1>
+    <p class="hero-sub">
+      식품·헬스케어·패션 카테고리 중심으로 약 2년간 퍼포먼스 광고를 운영했습니다.<br>
+      타겟 설계, A/B 테스트, 소재 기획, 리포팅까지 성과 개선에 필요한 전 과정을 수행해왔습니다.
+    </p>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="num">18억+</div>
+        <div class="label">누적 광고 집행액</div>
+      </div>
+      <div class="stat-item">
+        <div class="num">2년</div>
+        <div class="label">퍼포먼스 마케팅 경력</div>
+      </div>
+      <div class="stat-item">
+        <div class="num">3개</div>
+        <div class="label">주요 운영 업종</div>
+      </div>
+    </div>
+    <div class="hero-contact">
+      <a class="contact-btn primary" href="mailto:hangyul127@hanmail.net">
+        ✉ hangyul127@hanmail.net
+      </a>
+      <a class="contact-btn secondary" href="tel:010-7702-9163">
+        ☎ 010-7702-9163
+      </a>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-label">About Me</div>
+    <h2 class="section-title">데이터를 읽고 성과로 증명하는 퍼포먼스 마케터</h2>
+    <div class="about-intro">
+      안녕하세요. <strong>2년차 퍼포먼스 마케터 이한결</strong>입니다.<br><br>
+      무역, 영화제 산업 경험을 통해 다양한 이해관계자와 소통하며 니즈를 읽을 줄 아는 커뮤니케이션 역량을 쌓았습니다.
+      이후 디지털 마케팅 대행사에서는 실제 데이터를 기반으로 문제를 정의하고 개선안을 도출해 성과를 개선하는 역할을 수행했습니다.<br><br>
+      우리 회사, 우리 팀에 적합한 인재일지 궁금하실 만한 저의 강점을 먼저 요약해서 보여드립니다!
+    </div>
   </section>
 
-  <section>
-    <h2>Experience</h2>
+  <hr class="divider" style="max-width:1100px; margin: 0 auto;">
 
-    <div class="item">
-      <div class="title">회사명 — 직책</div>
-      <div class="meta">2023.01 — 현재</div>
-      <p>주요 업무 내용을 여기에 작성하세요.</p>
+  <!-- CORE CAPABILITY -->
+  <section id="capability">
+    <div class="section-label">Core Capability</div>
+    <h2 class="section-title">성과를 만드는 방식이 분명한 마케터</h2>
+    <p class="section-desc">데이터를 읽고 성과로 증명하는 퍼포먼스 마케터</p>
+    <div class="capability-grid">
+      <div class="capability-card">
+        <div class="cap-num">01</div>
+        <div class="cap-title">커뮤니케이션</div>
+        <div class="cap-desc">니즈를 정확히 파악하고 정보를 전달해 원활한 의사소통이 가능합니다.</div>
+      </div>
+      <div class="capability-card">
+        <div class="cap-num">02</div>
+        <div class="cap-title">데이터 분석</div>
+        <div class="cap-desc">데이터를 기반으로 문제를 정의하고 개선안을 도출할 수 있습니다.</div>
+      </div>
+      <div class="capability-card">
+        <div class="cap-num">03</div>
+        <div class="cap-title">전략 수립</div>
+        <div class="cap-desc">목표에 맞춰 전략을 수립하고 실행해 성과를 만들 수 있습니다.</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" style="max-width:1100px; margin: 0 auto;">
+
+  <!-- PROFILE -->
+  <section id="profile">
+    <div class="section-label">Profile</div>
+    <h2 class="section-title">이한결 / Hangyul LEE</h2>
+    <div class="profile-grid">
+
+      <!-- Work -->
+      <div class="profile-box full">
+        <div class="box-title">Work Experience</div>
+        <div class="timeline-item">
+          <div class="tl-date">2024.02 – 2025.12</div>
+          <div class="tl-content">
+            <div class="tl-title">슈퍼블릿커뮤니케이션즈 — 광고전략팀 퍼포먼스 마케터</div>
+            <div class="tl-desc">식품∙헬스케어∙패션 카테고리 중심의 퍼포먼스 광고 운영<br>광고∙GA 데이터 분석을 통한 KPI 지표 성과 개선</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-date">2022.04 – 2022.12</div>
+          <div class="tl-content">
+            <div class="tl-title">부산국제영화제 — 아시아콘텐츠&필름마켓실 스태프</div>
+            <div class="tl-desc">국내외 웹툰, 웹소설 등 IP 영상화를 위한 판권 세일즈 마켓 운영</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-date">2021.07 – 2021.11</div>
+          <div class="tl-content">
+            <div class="tl-title">부산국제영화제 — 프로그램팀 스태프</div>
+            <div class="tl-desc">배급사, 제작사와의 협업을 통한 아시아 권역 상영작 수급 및 게스트 초청</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-date">2018.05 – 2019.05</div>
+          <div class="tl-content">
+            <div class="tl-title">홍콩무역발전국 한국지사 — DB관리팀 사원</div>
+            <div class="tl-desc">홍콩 주재 행사 참여 기업 DB 관리 및 홍콩필마트 등 MICE 업무 지원</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Education -->
+      <div class="profile-box">
+        <div class="box-title">Education</div>
+        <div class="timeline-item">
+          <div class="tl-date">2013.03 – 2018.02</div>
+          <div class="tl-content">
+            <div class="tl-title">수원대학교</div>
+            <div class="tl-desc">언론정보학과 전공 / 영화영상학 부전공 졸업</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-date">2023.07 – 2023.09</div>
+          <div class="tl-content">
+            <div class="tl-title">도와세움</div>
+            <div class="tl-desc">&lt;디지털 마케팅 에센셜&gt; 이수</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- License & Tools -->
+      <div class="profile-box">
+        <div class="box-title">License</div>
+        <div class="license-list">
+          <div class="license-item">
+            <span class="name">GAC (Google Analytics Certification)</span>
+            <span class="date">2026.02</span>
+          </div>
+          <div class="license-item">
+            <span class="name">검색광고마케터 1급</span>
+            <span class="date">2024.05</span>
+          </div>
+        </div>
+        <div class="box-title" style="margin-top:32px;">Tools</div>
+        <div class="tool-tags">
+          <span class="tool-tag">Meta Ads</span>
+          <span class="tool-tag">Google Ads (GDN)</span>
+          <span class="tool-tag">Naver SA</span>
+          <span class="tool-tag">Google Analytics 4</span>
+          <span class="tool-tag">MS Office</span>
+          <span class="tool-tag">Figma</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="divider" style="max-width:1100px; margin: 0 auto;">
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-label">Projects</div>
+    <h2 class="section-title">구조가 보이는 포트폴리오</h2>
+    <p class="section-desc">문제를 정의하고 전략을 설계해 실제 성과를 만든 프로젝트들입니다.</p>
+
+    <!-- Project 01 -->
+    <div class="project-card">
+      <div class="project-header">
+        <div class="proj-num">PROJECT 01</div>
+        <div class="proj-title">대상웰라이프 | DA 유입 캠페인</div>
+        <div class="proj-sub">상품별 타겟 구조 재설계로 CTR과 유입 품질을 함께 개선했습니다.</div>
+        <div class="kpi-row">
+          <div class="kpi-badge">
+            <div class="kpi-label">전체 평균 CTR</div>
+            <div class="kpi-val">1.8% → 2.8%</div>
+          </div>
+          <div class="kpi-badge">
+            <div class="kpi-label">CTR 개선</div>
+            <div class="kpi-val">+1.0%p</div>
+          </div>
+          <div class="kpi-badge">
+            <div class="kpi-label">KPI 대비</div>
+            <div class="kpi-val">110% 상회</div>
+          </div>
+        </div>
+      </div>
+      <div class="project-body">
+        <div>
+          <div class="proj-section-title">프로젝트 요약</div>
+          <div class="proj-info-grid">
+            <div class="proj-info-item">
+              <div class="info-label">기간</div>
+              <div class="info-val">2025.07 – 2025.12</div>
+            </div>
+            <div class="proj-info-item">
+              <div class="info-label">매체</div>
+              <div class="info-val">Meta, GDN</div>
+            </div>
+            <div class="proj-info-item">
+              <div class="info-label">역할</div>
+              <div class="info-val">타겟 설계 · 매체 운영 · 성과 분석 · 리포팅</div>
+            </div>
+            <div class="proj-info-item">
+              <div class="info-label">기여도</div>
+              <div class="info-val">80%</div>
+            </div>
+          </div>
+
+          <div class="proj-section-title" style="margin-top:28px;">배경</div>
+          <p style="font-size:0.87rem; color:var(--text2); line-height:1.8;">
+            동일한 캠페인 안에서 식사대용 음료와 당뇨환자용 음료를 같은 타겟 구조로 운영하고 있어, 상품별 구매 맥락이 충분히 반영되지 않아 CTR 개선에 한계가 있을 것이라 판단했습니다.
+          </p>
+        </div>
+        <div>
+          <div class="proj-section-title">주요 액션</div>
+          <ul class="action-list">
+            <li>관심사 타겟 중심 구조에서 구매자 유사타겟 구조로 재설계</li>
+            <li>식사대용·당뇨환자용 구매 맥락에 맞춰 상품별 세그먼트 분리</li>
+            <li>저효율 지면·성별·연령·소재 반복 필터링으로 CTR 개선</li>
+          </ul>
+
+          <div class="proj-section-title" style="margin-top:28px;">A/B 테스트 결과</div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>매체</th>
+                <th>타겟</th>
+                <th>CTR</th>
+                <th>CPC</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td rowspan="2">META</td>
+                <td>전체 구매자 유사타겟</td>
+                <td>1.38%</td>
+                <td>537원</td>
+              </tr>
+              <tr>
+                <td><strong class="highlight">상품별 구매자 유사타겟</strong></td>
+                <td class="up">1.50%</td>
+                <td class="up">520원</td>
+              </tr>
+              <tr>
+                <td rowspan="2">GDN</td>
+                <td><strong class="highlight">키워드 타겟</strong></td>
+                <td class="up">3.59%</td>
+                <td class="up">55원</td>
+              </tr>
+              <tr>
+                <td>주제 타겟</td>
+                <td>3.38%</td>
+                <td>65원</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="insight-box">
+          <strong>인사이트</strong> — 유입 캠페인의 핵심은 타겟을 넓게 잡는 것이 아니라, 누가 어떤 이유로 반응하는지 기준을 다시 정의하는 것이었습니다.
+        </div>
+      </div>
     </div>
 
-    <div class="item">
-      <div class="title">회사명 — 직책</div>
-      <div class="meta">2021.03 — 2022.12</div>
-      <p>주요 업무 내용을 여기에 작성하세요.</p>
+    <!-- Project 02 -->
+    <div class="project-card">
+      <div class="project-header">
+        <div class="proj-num">PROJECT 02</div>
+        <div class="proj-title">펄세스 | '크릴오일' 건강식품 네이버 SA 운영</div>
+        <div class="proj-sub">키워드 전략과 랜딩 최적화로 검색광고 ROAS를 개선하였습니다.</div>
+        <div class="kpi-row">
+          <div class="kpi-badge">
+            <div class="kpi-label">CVR 개선</div>
+            <div class="kpi-val">+2.1%p</div>
+          </div>
+          <div class="kpi-badge">
+            <div class="kpi-label">ROAS 개선</div>
+            <div class="kpi-val">+152%p</div>
+          </div>
+          <div class="kpi-badge">
+            <div class="kpi-label">랜딩 전환</div>
+            <div class="kpi-val">이벤트 → 상세 페이지</div>
+          </div>
+        </div>
+      </div>
+      <div class="project-body">
+        <div>
+          <div class="proj-section-title">프로젝트 요약</div>
+          <div class="proj-info-grid">
+            <div class="proj-info-item">
+              <div class="info-label">기간</div>
+              <div class="info-val">2024.10 – 2025.10</div>
+            </div>
+            <div class="proj-info-item">
+              <div class="info-label">매체</div>
+              <div class="info-val">네이버 SA</div>
+            </div>
+            <div class="proj-info-item">
+              <div class="info-label">역할</div>
+              <div class="info-val">키워드 효율 파악 · 순위 입찰 관리 · T&D 작성 및 A/B 테스트</div>
+            </div>
+            <div class="proj-info-item">
+              <div class="info-label">기여도</div>
+              <div class="info-val">80%</div>
+            </div>
+          </div>
+
+          <div class="proj-section-title" style="margin-top:28px;">배경</div>
+          <p style="font-size:0.87rem; color:var(--text2); line-height:1.8;">
+            완만한 성장 단계에 접어든 브랜드로, 신규 키워드 확장보다 기존 검색 유입의 구매 전환을 높일 수 있는 운영이 필요했습니다.
+          </p>
+        </div>
+        <div>
+          <div class="proj-section-title">주요 액션</div>
+          <ul class="action-list">
+            <li>저효율 키워드 분석 및 순위 입찰 관리</li>
+            <li>상품별·랜딩페이지별 성과 분석으로 개선안 제안</li>
+            <li>광고별 T&D 작성 및 소재 A/B 테스트로 고효율 문구 발굴</li>
+          </ul>
+
+          <div class="proj-section-title" style="margin-top:28px;">랜딩페이지 최적화 결과</div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>랜딩</th>
+                <th>CTR</th>
+                <th>CVR</th>
+                <th>ROAS</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>이벤트 페이지</td>
+                <td>0.8%</td>
+                <td>6.2%</td>
+                <td>125%</td>
+              </tr>
+              <tr>
+                <td><strong class="highlight">상세 페이지</strong></td>
+                <td class="up">1.0%</td>
+                <td class="up">8.3%</td>
+                <td class="up">277%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="insight-box">
+          <strong>인사이트</strong> — 완만한 성장 단계의 브랜드는 신규 키워드 확장보다 상품에 맞는 메시지와 랜딩 구조를 설계할 때 더 크게 개선될 수 있었습니다.
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 03 -->
+    <div class="project-card">
+      <div class="project-header">
+        <div class="proj-num">PROJECT 03</div>
+        <div class="proj-title">펄세스 | DA 단백질 음료 재고 소진 캠페인</div>
+        <div class="proj-sub">6개월 내 재고소진 목표를 달성하기 위해 전환 중심 전략을 실행하였습니다.</div>
+        <div class="kpi-row">
+          <div class="kpi-badge">
+            <div class="kpi-label">재고 소진</div>
+            <div class="kpi-val">목표 대비 1개월 조기 달성</div>
+          </div>
+          <div class="kpi-badge">
+            <div class="kpi-label">ROAS</div>
+            <div class="kpi-val">226% → 805%</div>
+          </div>
+          <div class="kpi-badge">
+            <div class="kpi-label">ROAS 개선</div>
+            <div class="kpi-val">+579%p</div>
+          </div>
+        </div>
+      </div>
+      <div class="project-body">
+        <div>
+          <div class="proj-section-title">프로젝트 요약</div>
+          <div class="proj-info-grid">
+            <div class="proj-info-item">
+              <div class="info-label">기간</div>
+              <div class="info-val">2024.07 – 2024.11</div>
+            </div>
+            <div class="proj-info-item">
+              <div class="info-label">매체</div>
+              <div class="info-val">Meta</div>
+            </div>
+            <div class="proj-info-item">
+              <div class="info-label">역할</div>
+              <div class="info-val">타겟 도출 및 소재 기획 등 프로젝트 운영 전반</div>
+            </div>
+            <div class="proj-info-item">
+              <div class="info-label">기여도</div>
+              <div class="info-val">80%</div>
+            </div>
+          </div>
+
+          <div class="proj-section-title" style="margin-top:28px;">배경</div>
+          <p style="font-size:0.87rem; color:var(--text2); line-height:1.8;">
+            유통기한 이슈로 단기간 내 재고소진이 필요했지만, 제품 인지도가 낮은 상황이었습니다. 노출 확대와 전환 효율을 동시에 설계해야 했습니다.
+          </p>
+        </div>
+        <div>
+          <div class="proj-section-title">주요 액션</div>
+          <ul class="action-list">
+            <li>논타겟과 관심사 타겟을 병행 운영해 도달과 전환을 함께 확보</li>
+            <li>가격 소구 소재 A/B 테스트로 고성과 소재 도출</li>
+            <li>러닝 시즌 타겟 접점 확대를 위한 런데이 앱 광고 제안 및 집행</li>
+          </ul>
+
+          <div class="proj-section-title" style="margin-top:28px;">타겟 믹스 결과</div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>타겟</th>
+                <th>CVR</th>
+                <th>ROAS</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>관심사 타겟</td>
+                <td class="up">14.6%</td>
+                <td>519%</td>
+              </tr>
+              <tr>
+                <td>논타겟</td>
+                <td>13.2%</td>
+                <td class="up">527%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="insight-box">
+          <strong>인사이트</strong> — 재고소진 캠페인은 단순 할인보다 시즌성과 타겟 맥락을 함께 설계할 때 성과가 커졌고, 초기 반응 확보와 후반 효율 대응을 함께 고려해야 했습니다.
+        </div>
+      </div>
     </div>
 
   </section>
 
-  <section>
-    <h2>Skills</h2>
-    <div class="skills">
-      <span class="skill-tag">Meta Ads</span>
-      <span class="skill-tag">Google Ads</span>
-      <span class="skill-tag">Kakao Ads</span>
-      <span class="skill-tag">GA4</span>
-      <span class="skill-tag">Mixpanel</span>
-      <span class="skill-tag">SQL</span>
+  <footer>
+    <p style="font-size:1rem; font-weight:700; color:var(--text); margin-bottom:4px;">이한결 / Hangyul LEE</p>
+    <p>2년차 퍼포먼스 마케터</p>
+    <div class="footer-contact">
+      <a href="mailto:hangyul127@hanmail.net">hangyul127@hanmail.net</a>
+      <a href="tel:010-7702-9163">010-7702-9163</a>
     </div>
-  </section>
-
-  <section>
-    <h2>Education</h2>
-    <div class="item">
-      <div class="title">대학교명 — 전공</div>
-      <div class="meta">졸업연도</div>
-    </div>
-  </section>
-
-  <footer>© 2026 이름</footer>
+    <p style="margin-top:24px;">© 2026 이한결. All rights reserved.</p>
+  </footer>
 
 </body>
 </html>
